@@ -6,12 +6,7 @@ function App() {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: "Comer arroz",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      text: "Comer feijao",
+      text: "Exemplo",
       isCompleted: false,
     },
   ]);
@@ -37,18 +32,29 @@ function App() {
     setTodos(filterTodo);
   };
 
+  const completeTodo = (id) => {
+    const newTodos = [...todos];
+    newTodos.map((todo) =>
+      todo.id === id ? (todo.isCompleted = !todo.isCompleted) : todo,
+    );
+
+    setTodos(newTodos);
+  };
+
   return (
     <div className="bg-neutral-200 h-screen flex items-center justify-center">
-      <div className="bg-neutral-50 w-max p-20 m-5">
-        <h1 className="text-4xl font-sans mb-10">Todo List</h1>
+      <div className="bg-neutral-50 w-max p-5 m-5 rounded-lg shadow-lg">
+        <h1 className="text-4xl font-bold font-sans mb-5 text-center">
+          Todo List
+        </h1>
         <AddTask addTodo={addTodo} />
-        <div className="mt-10">
+        <div className="mt-8">
           {todos.map((item) => (
             <Tasks
-              item={item.text}
+              item={item}
               key={item.id}
-              id={item.id}
               removeTodo={removeTodo}
+              completeTodo={completeTodo}
             />
           ))}
         </div>

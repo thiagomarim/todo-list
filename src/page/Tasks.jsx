@@ -1,19 +1,32 @@
 import React from "react";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { MdDelete } from "react-icons/md";
 
-const Tasks = ({ item, removeTodo, id }) => {
+const Tasks = ({ item, removeTodo, completeTodo }) => {
   return (
-    <div className="p-2 bg-white mb-4 ring-1 ring-blue-300">
+    <div
+      className={`${
+        item.isCompleted
+          ? "p-2 bg-neutral-200 rounded-md mb-4 opacity-50"
+          : "p-2 bg-neutral-200 rounded-md mb-4"
+      }`}
+    >
       <div className="flex justify-between items-center">
-        <p>{item}</p>
+        <p className={`${item.isCompleted ? "line-through" : ""}`}>
+          {item.text}
+        </p>
         <div className="flex gap-2">
-          <button className="bg-green-600 text-white px-2 py-1">
-            Concluido
+          <button
+            onClick={() => completeTodo(item.id)}
+            className="bg-green-600 text-white px-2 py-1"
+          >
+            <IoCheckmarkSharp />
           </button>
           <button
-            onClick={() => removeTodo(id)}
+            onClick={() => removeTodo(item.id)}
             className="bg-red-600 text-white px-2 py-1"
           >
-            X
+            <MdDelete />
           </button>
         </div>
       </div>

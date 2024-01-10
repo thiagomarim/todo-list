@@ -12,14 +12,21 @@ const AddTask = ({ addTodo }) => {
 
   return (
     <div>
-      <form className="flex gap-4" onSubmit={handleSubmit}>
+      <form
+        className="flex gap-4 items-center justify-between"
+        onSubmit={handleSubmit}
+      >
         <input
           value={value}
           onChange={({ target }) => setValue(target.value)}
-          className="p-2 w-full text-gray-800 rounded-sm ring-1 ring-blue-400 focus:border-none focus:ring-1 focus:ring-blue-600"
+          className="bg-neutral-200 py-2 px-4 w-full text-gray-800 rounded-sm"
           type="text"
+          placeholder="Escreva a sua tarefa aqui"
         />
-        <button type="submit" className="py-2 px-4 bg-blue-400 rounded-md">
+        <button
+          type="submit"
+          className="py-2 px-4 w-max h-max text-white bg-blue-400 rounded-sm"
+        >
           Salvar
         </button>
       </form>

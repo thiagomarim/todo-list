@@ -29,6 +29,14 @@ function App() {
     setTodos(newTodos);
   };
 
+  const removeTodo = (id) => {
+    const newTodos = [...todos];
+    const filterTodo = newTodos.filter((todo) =>
+      todo.id !== id ? todo : null,
+    );
+    setTodos(filterTodo);
+  };
+
   return (
     <div className="bg-neutral-200 h-screen flex items-center justify-center">
       <div className="bg-neutral-50 w-max p-20 m-5">
@@ -36,7 +44,12 @@ function App() {
         <AddTask addTodo={addTodo} />
         <div className="mt-10">
           {todos.map((item) => (
-            <Tasks item={item.text} key={item.id} />
+            <Tasks
+              item={item.text}
+              key={item.id}
+              id={item.id}
+              removeTodo={removeTodo}
+            />
           ))}
         </div>
       </div>

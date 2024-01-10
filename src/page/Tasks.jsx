@@ -7,8 +7,8 @@ const Tasks = ({ item, removeTodo, completeTodo }) => {
     <div
       className={`${
         item.isCompleted
-          ? "p-2 bg-neutral-200 rounded-md mb-4 opacity-50"
-          : "p-2 bg-neutral-200 rounded-md mb-4"
+          ? "p-2 bg-neutral-200 rounded-md mb-4 text-lg opacity-50"
+          : "p-2 bg-neutral-200 rounded-md mb-4 text-lg"
       }`}
     >
       <div className="flex justify-between items-center">
